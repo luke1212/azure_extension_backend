@@ -1,10 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const fetch = require('node-fetch'); // You may need to install node-fetch if using Node < 18
-
-require('dotenv').config(); // Loads environment variables from a .env file
+const fetch = require('node-fetch');
+const cors = require('cors'); // Add this line
+require('dotenv').config();
 
 const app = express();
+app.use(cors()); // Enable CORS for all routes
 app.use(bodyParser.json());
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
@@ -41,7 +42,6 @@ app.post('/api/chat', async (req, res) => {
     if (data.error) {
       return res.status(500).json({ error: data.error.message });
     }
-    // Expecting a response structure with data.choices[0].message.content
     const reply = data.choices && data.choices.length > 0 ? data.choices[0].message.content : "No reply received.";
     res.json({ reply });
   } catch (error) {
