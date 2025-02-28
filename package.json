@@ -1,0 +1,15 @@
+{
+    "name": "chatgpt-backend",
+    "version": "1.0.0",
+    "description": "Backend for proxying ChatGPT API calls",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.20.1",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "node-fetch": "^2.6.7"
+    }
+}
